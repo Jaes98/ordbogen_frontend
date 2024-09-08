@@ -35,7 +35,7 @@ async function searchClicked(event) {
     document.querySelector("#results").insertAdjacentHTML(
       "afterbegin",
       /*html*/ `
-    <div class="result">Prøv igen, kunne ikke finde ${query}</div>
+    <div class="result">Prøv igen, kunne ikke finde ${searchTerm}</div>
     `
     );
   } else {
@@ -54,7 +54,14 @@ async function searchClicked(event) {
   }
 }
 
-async function findWord(query) {
+async function findEntryAt(index) {
+  const entry = await fetch(`${url}/${index}`).then((response) =>
+    response.json()
+  );
+  return entry;
+}
+
+async function findWord(searchTerm) {
   let middle;
   let localMax = max;
   let localMin = min;
@@ -75,7 +82,7 @@ async function findWord(query) {
     document.querySelector("#time").innerHTML = (totalTime / 1000).toFixed(2);
 
 
-    const comparison = compare(query, entry.inflected);
+    const comparison = compare(searchTerm, entry.inflected);
 
   
     if (comparison == 0) {
@@ -91,11 +98,4 @@ async function findWord(query) {
 
 function compare(value1, value2) {
   return value1.localeCompare(value2);
-}
-
-async function findEntryAt(index) {
-  const entry = await fetch(`${url}/${index}`).then((response) =>
-    response.json()
-  );
-  return entry;
 }
