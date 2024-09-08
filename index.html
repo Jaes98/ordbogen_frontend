@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordbog-frontend</title>
+  </head>
+  <body>
+    <h2>Her kan du søge i den danske ordbog</h2>
+    <form id="input-form">
+      <label for="input">Indtast søgeord</label>
+      <input type="text" name="input" />
+      <button>Søg</button>
+    </form>
+    <div>Antal iterationer: 
+        <span id="iterations">0</span> 
+        
+        på 
+        
+        <span id="time">0.00</span> 
+        
+        sekunder
+    </div>
+
+    <div id="results"></div>
+  </body>
+  <script src="script.js"></script>
+</html>
